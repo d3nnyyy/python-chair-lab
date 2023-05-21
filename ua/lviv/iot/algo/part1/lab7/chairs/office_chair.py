@@ -4,6 +4,17 @@ from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
 
 
 class OfficeChair(Chair, ABC):
+    """
+    A class representing an office chair.
+
+    Attributes:
+        MIN_ANGLE (float): The minimum angle of the office chair.
+        MAX_ANGLE (float): The maximum angle of the office chair.
+        max_weight (float): The maximum weight the chair can handle.
+        material (str): The material the chair is made of.
+        angle (float): The angle of the office chair.
+        has_wheels (bool): Whether the office chair has wheels.
+    """
     MIN_ANGLE = 90
     MAX_ANGLE = 135
 
@@ -16,6 +27,12 @@ class OfficeChair(Chair, ABC):
         return f"OfficeChair: {self.max_weight}, {self.material}, {self.angle}, {self.has_wheels}"
 
     def adjust_position(self, delta_angle):
+        """
+        Adjusts the angle of the office chair.
+        :param delta_angle: The amount of angle to adjust the office chair by.
+        :type delta_angle: float
+        :raises ValueError: If the angle of the office chair is out of bounds.
+        """
         if self.MIN_ANGLE <= self.angle + delta_angle <= self.MAX_ANGLE:
             self.angle += delta_angle
         elif self.angle + delta_angle > self.MAX_ANGLE:

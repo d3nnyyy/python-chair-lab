@@ -4,6 +4,11 @@ from ua.lviv.iot.algo.part1.lab7.chairs.office_chair import OfficeChair
 from ua.lviv.iot.algo.part1.lab7.chairs.recliner_chair import ReclinerChair
 from ua.lviv.iot.algo.part1.lab7.manager.chair_manager import ChairManager
 
+"""
+A module that demonstrates the usage of the ChairManager class.
+"""
+
+
 manager = ChairManager()
 feeding_table1 = FeedingTable(40, "Wood", 0.8, 2)
 feeding_table2 = FeedingTable(20, "Plastic", 0.6, 3)
@@ -26,6 +31,7 @@ manager.add_chair(gaming_chair2)
 manager.add_chair(recliner_chair1)
 manager.add_chair(recliner_chair2)
 
+print("All chairs:")
 for chair in manager.chairs:
     print(chair)
 
