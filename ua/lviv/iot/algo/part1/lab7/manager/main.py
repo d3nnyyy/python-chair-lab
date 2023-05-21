@@ -1,8 +1,8 @@
-from ua.lviv.iot.algo.part1.lab7.chairs.feedingTable import FeedingTable
-from ua.lviv.iot.algo.part1.lab7.chairs.gamingChair import GamingChair
-from ua.lviv.iot.algo.part1.lab7.chairs.officeChair import OfficeChair
-from ua.lviv.iot.algo.part1.lab7.chairs.reclinerChair import ReclinerChair
-from ua.lviv.iot.algo.part1.lab7.manager.chairManager import ChairManager
+from ua.lviv.iot.algo.part1.lab7.chairs.feeding_table import FeedingTable
+from ua.lviv.iot.algo.part1.lab7.chairs.gaming_chair import GamingChair
+from ua.lviv.iot.algo.part1.lab7.chairs.office_chair import OfficeChair
+from ua.lviv.iot.algo.part1.lab7.chairs.recliner_chair import ReclinerChair
+from ua.lviv.iot.algo.part1.lab7.manager.chair_manager import ChairManager
 
 manager = ChairManager()
 feeding_table1 = FeedingTable(40, "Wood", 0.8, 2)
