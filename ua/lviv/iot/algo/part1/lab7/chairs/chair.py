@@ -21,12 +21,6 @@ class Chair(ABC):
     @abstractmethod
     def adjust_position(self):
         """
-        Abstract method to adjust the position of the chair.
-
-        Raises:
-            NotImplementedError: If the method is not implemented.
-
-        Returns:
-            None
+        Adjusts the position of the chair.
         """
         pass
