@@ -24,6 +24,7 @@ class ReclinerChair(Chair, ABC):
         super().__init__(max_weight, material)
         self.angle = angle
         self.has_remote_control = has_remote_control
+        self.favourite_owner_set = {"granny Stefa, grandpa Fedir"}
 
     def __str__(self):
         return f"ReclinerChair: " \
@@ -32,12 +33,16 @@ class ReclinerChair(Chair, ABC):
                f"{self.angle}, " \
                f"{self.has_remote_control}"
 
+    def __len__(self):
+        return len(self.favourite_owner_set)
+
     def adjust_position(self, delta_angle):
         """
         Adjusts the angle of the recliner chair.
         :param delta_angle: The amount of angle to adjust the recliner chair by.
         :type delta_angle: float
         :raises ValueError: If the angle of the recliner chair is out of bounds.
+        :return: The angle of the recliner chair.
         """
         if self.MIN_ANGLE <= self.angle + delta_angle <= self.MAX_ANGLE:
             self.angle += delta_angle
@@ -45,3 +50,4 @@ class ReclinerChair(Chair, ABC):
             self.angle = self.MAX_ANGLE
         else:
             self.angle = self.MIN_ANGLE
+        return self.angle

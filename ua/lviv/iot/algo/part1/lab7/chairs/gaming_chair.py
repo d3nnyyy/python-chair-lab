@@ -24,6 +24,7 @@ class GamingChair(Chair, ABC):
         super().__init__(max_weight, material)
         self.height = height
         self.has_footrest = has_footrest
+        self.favourite_owner_set = {"Oleksandr, Valerii"}
 
     def __str__(self):
         return f"GamingChair: " \
@@ -32,12 +33,16 @@ class GamingChair(Chair, ABC):
                f"{self.height}, " \
                f"{self.has_footrest}"
 
+    def __len__(self):
+        return len(self.favourite_owner_set)
+
     def adjust_position(self, delta_height):
         """
         Adjusts the height of the gaming chair.
         :arg delta_height: The amount of height to adjust the gaming chair by.
         :type delta_height: float
         :raises ValueError: If the height of the gaming chair is out of bounds.
+        :return: The height of the gaming chair.
         """
         if self.MIN_HEIGHT <= self.height + delta_height <= self.MAX_HEIGHT:
             self.height += delta_height
@@ -45,3 +50,4 @@ class GamingChair(Chair, ABC):
             self.height = self.MAX_HEIGHT
         else:
             self.height = self.MIN_HEIGHT
+        return self.height

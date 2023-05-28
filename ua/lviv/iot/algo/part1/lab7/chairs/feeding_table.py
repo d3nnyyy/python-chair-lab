@@ -25,9 +25,13 @@ class FeedingTable(Chair, ABC):
         super().__init__(max_weight, material)
         self.height = height
         self.child_age = child_age
+        self.favourite_owner_set = {"baby Max, baby Nadya"}
 
     def __str__(self):
         return f"FeedingTable: {self.max_weight}, {self.material}, {self.height}, {self.child_age}"
+
+    def __len__(self):
+        return len(self.favourite_owner_set)
 
     def adjust_position(self, delta_height):
         """
@@ -35,6 +39,7 @@ class FeedingTable(Chair, ABC):
         :arg delta_height: The amount of height to adjust the feeding table by.
         :type delta_height: float
         :raises ValueError: If the height of the feeding table is out of bounds.
+        :return: The height of the feeding table.
         """
         if self.MIN_HEIGHT <= self.height + delta_height <= self.MAX_HEIGHT:
             self.height += delta_height
@@ -42,3 +47,4 @@ class FeedingTable(Chair, ABC):
             self.height = self.MAX_HEIGHT
         else:
             self.height = self.MIN_HEIGHT
+        return self.height
