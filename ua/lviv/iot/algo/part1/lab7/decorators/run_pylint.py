@@ -12,6 +12,7 @@ def run_pylint(file_name):
     :param file_name: The name of the file to run pylint on.
     :return: The decorated function.
     """
+
     def decorator(func):
         def wrapper(*args, **kwargs):
             runner = f"pylint {os.path.abspath(file_name)}"
@@ -21,16 +22,3 @@ def run_pylint(file_name):
         return wrapper
 
     return decorator
-
-# import subprocess
-#
-#
-# def run_pylint(func):
-#     def wrapper(*args, **kwargs):
-#         module_name = func.__module__
-#         file_name = module_name.replace(".", "/") + ".py"
-#         runner = f"pylint {file_name}"
-#         subprocess.run(runner, shell=True)
-#         return func(*args, **kwargs)
-#
-#     return wrapper
