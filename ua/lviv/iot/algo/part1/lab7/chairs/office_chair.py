@@ -1,6 +1,7 @@
 """
 Module that contains the OfficeChair class.
 """
+
 from abc import ABC
 
 from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
@@ -9,6 +10,7 @@ from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
 class OfficeChair(Chair, ABC):
     """
     A class representing an office chair.
+    
     Attributes:
         MIN_ANGLE (float): The minimum angle of the office chair.
         MAX_ANGLE (float): The maximum angle of the office chair.

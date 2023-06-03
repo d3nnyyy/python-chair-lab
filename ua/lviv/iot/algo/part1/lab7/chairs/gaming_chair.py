@@ -1,6 +1,7 @@
 """
 Module that contains the GamingChair class.
 """
+
 from abc import ABC
 
 from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
@@ -9,6 +10,7 @@ from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
 class GamingChair(Chair, ABC):
     """
     A class representing a gaming chair.
+
     Attributes:
         MIN_HEIGHT (float): The minimum height of the gaming chair.
         MAX_HEIGHT (float): The maximum height of the gaming chair.
@@ -35,6 +37,10 @@ class GamingChair(Chair, ABC):
 
     def __len__(self):
         return len(self.favourite_owner_set)
+=======
+
+    def __str__(self):
+        return f"GamingChair: {self.max_weight}, {self.material}, {self.height}, {self.has_footrest}"
 
     def adjust_position(self, delta_height):
         """

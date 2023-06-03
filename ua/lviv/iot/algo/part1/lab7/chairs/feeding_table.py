@@ -1,6 +1,7 @@
 """
 Module for the FeedingTable class.
 """
+
 from abc import ABC
 
 from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
@@ -9,6 +10,7 @@ from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
 class FeedingTable(Chair, ABC):
     """
     A class representing a feeding table chair.
+
     Attributes:
         MIN_HEIGHT (float): The minimum height of the feeding table.
         MAX_HEIGHT (float): The maximum height of the feeding table.
@@ -27,11 +29,13 @@ class FeedingTable(Chair, ABC):
         self.child_age = child_age
         self.favourite_owner_set = {"baby Max, baby Nadya"}
 
+
     def __str__(self):
         return f"FeedingTable: {self.max_weight}, {self.material}, {self.height}, {self.child_age}"
 
     def __len__(self):
         return len(self.favourite_owner_set)
+
 
     def adjust_position(self, delta_height):
         """

@@ -1,6 +1,7 @@
 """
 Module that contains the ReclinerChair class.
 """
+
 from abc import ABC
 
 from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
@@ -9,6 +10,7 @@ from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
 class ReclinerChair(Chair, ABC):
     """
     A class representing a recliner chair.
+
     Attributes:
         MIN_ANGLE (float): The minimum angle of the recliner chair.
         MAX_ANGLE (float): The maximum angle of the recliner chair.
@@ -35,6 +37,9 @@ class ReclinerChair(Chair, ABC):
 
     def __len__(self):
         return len(self.favourite_owner_set)
+
+    def __str__(self):
+        return f"ReclinerChair: {self.max_weight}, {self.material}, {self.angle}, {self.has_remote_control}"
 
     def adjust_position(self, delta_angle):
         """
