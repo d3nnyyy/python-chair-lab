@@ -1,3 +1,7 @@
+"""
+Module that contains the ReclinerChair class.
+"""
+
 from abc import ABC
 
 from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
@@ -22,6 +26,17 @@ class ReclinerChair(Chair, ABC):
         super().__init__(max_weight, material)
         self.angle = angle
         self.has_remote_control = has_remote_control
+        self.favourite_owner_set = {"granny Stefa, grandpa Fedir"}
+
+    def __str__(self):
+        return f"ReclinerChair: " \
+               f"{self.max_weight}, " \
+               f"{self.material}, " \
+               f"{self.angle}, " \
+               f"{self.has_remote_control}"
+
+    def __len__(self):
+        return len(self.favourite_owner_set)
 
     def __str__(self):
         return f"ReclinerChair: {self.max_weight}, {self.material}, {self.angle}, {self.has_remote_control}"
@@ -32,6 +47,7 @@ class ReclinerChair(Chair, ABC):
         :param delta_angle: The amount of angle to adjust the recliner chair by.
         :type delta_angle: float
         :raises ValueError: If the angle of the recliner chair is out of bounds.
+        :return: The angle of the recliner chair.
         """
         if self.MIN_ANGLE <= self.angle + delta_angle <= self.MAX_ANGLE:
             self.angle += delta_angle
@@ -39,3 +55,4 @@ class ReclinerChair(Chair, ABC):
             self.angle = self.MAX_ANGLE
         else:
             self.angle = self.MIN_ANGLE
+        return self.angle

@@ -1,3 +1,7 @@
+"""
+Module that contains the OfficeChair class.
+"""
+
 from abc import ABC
 
 from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
@@ -6,7 +10,7 @@ from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
 class OfficeChair(Chair, ABC):
     """
     A class representing an office chair.
-
+    
     Attributes:
         MIN_ANGLE (float): The minimum angle of the office chair.
         MAX_ANGLE (float): The maximum angle of the office chair.
@@ -22,9 +26,13 @@ class OfficeChair(Chair, ABC):
         super().__init__(max_weight, material)
         self.angle = angle
         self.has_wheels = has_wheels
+        self.favourite_owner_set = {"Mr Black, Mr Brown"}
 
     def __str__(self):
         return f"OfficeChair: {self.max_weight}, {self.material}, {self.angle}, {self.has_wheels}"
+
+    def __len__(self):
+        return len(self.favourite_owner_set)
 
     def adjust_position(self, delta_angle):
         """
@@ -32,6 +40,7 @@ class OfficeChair(Chair, ABC):
         :param delta_angle: The amount of angle to adjust the office chair by.
         :type delta_angle: float
         :raises ValueError: If the angle of the office chair is out of bounds.
+        :return: The angle of the office chair.
         """
         if self.MIN_ANGLE <= self.angle + delta_angle <= self.MAX_ANGLE:
             self.angle += delta_angle
@@ -39,3 +48,4 @@ class OfficeChair(Chair, ABC):
             self.angle = self.MAX_ANGLE
         else:
             self.angle = self.MIN_ANGLE
+        return self.angle
