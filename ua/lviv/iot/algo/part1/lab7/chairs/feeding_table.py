@@ -4,6 +4,8 @@ Module for the FeedingTable class.
 from abc import ABC
 
 from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
+from ua.lviv.iot.algo.part1.lab7.chairs.exceptions import InvalidHeightException
+from ua.lviv.iot.algo.part1.lab7.decorators.log_exception import logged
 
 
 class FeedingTable(Chair, ABC):
@@ -33,6 +35,7 @@ class FeedingTable(Chair, ABC):
     def __len__(self):
         return len(self.favourite_owner_set)
 
+    @logged(InvalidHeightException, "file")
     def adjust_position(self, delta_height):
         """
         Adjusts the height of the feeding table.
@@ -41,10 +44,7 @@ class FeedingTable(Chair, ABC):
         :raises ValueError: If the height of the feeding table is out of bounds.
         :return: The height of the feeding table.
         """
-        if self.MIN_HEIGHT <= self.height + delta_height <= self.MAX_HEIGHT:
-            self.height += delta_height
-        elif self.height + delta_height > self.MAX_HEIGHT:
-            self.height = self.MAX_HEIGHT
-        else:
-            self.height = self.MIN_HEIGHT
+        if not self.MIN_HEIGHT <= self.height + delta_height <= self.MAX_HEIGHT:
+            raise InvalidHeightException
+        self.height += delta_height
         return self.height
