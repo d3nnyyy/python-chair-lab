@@ -20,6 +20,14 @@ class ChairManager:
     def __iter__(self):
         return iter(self.chairs)
 
+=======
+class ChairManager:
+    """
+    Class that manages chairs
+
+    Attributes:
+        chairs (list): A list of chairs.
+    """
     chairs = []
 
     def find_chair_by_material(self, material):
