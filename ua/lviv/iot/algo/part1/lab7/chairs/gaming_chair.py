@@ -37,7 +37,6 @@ class GamingChair(Chair, ABC):
 
     def __len__(self):
         return len(self.favourite_owner_set)
-=======
 
     def __str__(self):
         return f"GamingChair: {self.max_weight}, {self.material}, {self.height}, {self.has_footrest}"
