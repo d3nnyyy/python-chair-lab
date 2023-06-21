@@ -20,7 +20,6 @@ class ChairManager:
     def __iter__(self):
         return iter(self.chairs)
 
-=======
 class ChairManager:
     """
     Class that manages chairs
