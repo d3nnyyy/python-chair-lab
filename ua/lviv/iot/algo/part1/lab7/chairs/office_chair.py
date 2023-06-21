@@ -5,6 +5,8 @@ Module that contains the OfficeChair class.
 from abc import ABC
 
 from ua.lviv.iot.algo.part1.lab7.chairs.chair import Chair
+from ua.lviv.iot.algo.part1.lab7.chairs.exceptions import InvalidAngleException
+from ua.lviv.iot.algo.part1.lab7.decorators.log_exception import logged
 
 
 class OfficeChair(Chair, ABC):
@@ -34,6 +36,7 @@ class OfficeChair(Chair, ABC):
     def __len__(self):
         return len(self.favourite_owner_set)
 
+    @logged(InvalidAngleException, "console")
     def adjust_position(self, delta_angle):
         """
         Adjusts the angle of the office chair.
@@ -42,10 +45,7 @@ class OfficeChair(Chair, ABC):
         :raises ValueError: If the angle of the office chair is out of bounds.
         :return: The angle of the office chair.
         """
-        if self.MIN_ANGLE <= self.angle + delta_angle <= self.MAX_ANGLE:
-            self.angle += delta_angle
-        elif self.angle + delta_angle > self.MAX_ANGLE:
-            self.angle = self.MAX_ANGLE
-        else:
-            self.angle = self.MIN_ANGLE
+        if not self.MIN_ANGLE <= self.angle + delta_angle <= self.MAX_ANGLE:
+            raise InvalidAngleException
+        self.angle += delta_angle
         return self.angle
